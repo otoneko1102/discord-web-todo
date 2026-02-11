@@ -29,12 +29,15 @@ node setup.js
 
 | 機能 | 説明 |
 |------|------|
-| CRUD | タスクの作成・閲覧・編集・削除 |
+| CRUD | タスクの作成・閲覧・編集・削除（確認ポップアップ付き） |
 | ステータス | 未着手 / 進行中 / 保留 / 完了 / その他 |
 | 優先度 | 低 / 中 / 高 / 緊急 |
 | 期限 | 日付指定 |
-| コメント | タスクへのコメント追加 |
+| コメント | タスクへのコメント追加・表示（Web: 件数表示、Discord: ボタンで別枠表示） |
+| フィルター | 状態・優先度・自分のタスク（件数付き） |
+| ソート | タスク一覧のソート（ID・作成日順など） |
 | 複数担当 | 複数ユーザーへの同時割り当て |
+| 完了タスク | リスト末尾に自動配置 |
 
 </details>
 
@@ -56,9 +59,9 @@ node setup.js
 | `/todo panel` | 管理パネル表示 |
 | `/todo add` | タスク追加 |
 | `/todo list` | タスク一覧 |
-| `/todo view` | タスク詳細 |
+| `/todo view` | タスク詳細（コメント表示ボタン付き） |
 | `/todo status` | ステータス変更 |
-| `/todo delete` | タスク削除 |
+| `/todo delete` | タスク削除（確認ボタン付き） |
 | `/todo stats` | 統計表示 |
 | `/group create` | グループ作成 |
 | `/group list` | グループ一覧 |
@@ -171,8 +174,7 @@ pm2 start ecosystem.config.js
 | `PANEL_CHANNEL_ID` | — | パネル自動送信チャンネル | — |
 | `NOTIFY_CHANNEL_ID` | — | 通知チャンネル | — |
 | `PERMISSION_MODE` | — | 権限モード（`white` / `black` / `disable`） | `disable` |
-| `PERMISSION_ROLE_ID` | — | 対象ロールID | — |
-
+| `PERMISSION_ROLE_ID` | — | 対象ロールID | — || `TZ` | — | タイムゾーン（例: `Asia/Tokyo`） | システムのTZ |
 > [!NOTE]
 > **権限モード** について:
 > - `disable` — 制限なし（サーバーメンバーなら全員利用可）
@@ -234,7 +236,7 @@ pm2 stop todo            # 停止
 |----------|------|
 | Backend | Node.js, Express, Discord.js v14 |
 | Database | SQLite (better-sqlite3, WAL) |
-| Frontend | Astro (静的出力), Svelte 5, TypeScript |
+| Frontend | Astro (静的出力), Svelte 5, TypeScript, レスポンシブ |
 | Process | pm2 |
 
 ## ライセンス
