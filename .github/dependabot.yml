@@ -1,0 +1,17 @@
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/frontend"
+    schedule:
+      interval: "weekly"
+    versioning-strategy: "increase"
+    allow:
+      - dependency-type: "direct"
+
+  - package-ecosystem: "npm"
+    directory: "/backend"
+    schedule:
+      interval: "weekly"
+    versioning-strategy: "increase"
+    allow:
+      - dependency-type: "direct"
