@@ -21,6 +21,6 @@
     "express": "^5.2.1",
     "express-rate-limit": "^8.2.1",
     "node-os-utils": "^2.0.1",
-    "uuid": "^13.0.0"
+    "uuid": "^14.0.0"
   }
 }
